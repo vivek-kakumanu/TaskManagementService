@@ -56,7 +56,7 @@ public class TaskDaoImpl implements TaskDao {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.saveOrUpdate(task);
+			session.update(task);
 			tx.commit();
 
 		} catch (Exception ex) {
@@ -105,7 +105,7 @@ public class TaskDaoImpl implements TaskDao {
 		Task task = new Task();
 		try {
 			tx = session.beginTransaction();
-			task = session.get(Task.class, id);
+			task = session.get(Task.class, new Long(id));
 			tx.commit();
 
 		} catch (Exception ex) {
